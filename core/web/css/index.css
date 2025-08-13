@@ -1,0 +1,532 @@
+/* Var section*/
+
+:root {
+    --color-outline: #1a1a1d;
+    --color-background: #232326;
+    --color-background-deeper: #212225;
+    --color-text: #cfd4d9;
+}
+
+/* Fonts section */
+@font-face {
+    font-family: "RobotoC";
+    src: url("../fonts/Roboto-Regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Source Code Pro C";
+    src: url("../fonts/SourceCodePro-Regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: "OpenSans Light C";
+    src: url("../fonts/OpenSans-Light.woff") format("woff");
+}
+
+/* Body */
+
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    font-family: 'RobotoC', serif;
+    flex-wrap: wrap;
+    background-color: var(--color-background);
+}
+
+.main-context {
+    margin: 5px 8px 8px;
+}
+
+.body > * {
+    background-color: var(--color-background);
+    font-family: 'RobotoC', serif;
+}
+
+/* Generic */
+
+.dropdown-input {
+    width: 240px;
+}
+
+.dropdown-input select {
+    cursor: pointer;
+    position: absolute;
+    border-radius: 2px;
+    outline: 2px solid var(--color-outline);
+    width: 240px;
+    margin-right: 8px;
+    background-color: #2196F3;
+}
+
+.dropdown-input select option {
+    background-color: var(--color-background-deeper);
+}
+
+.dropdown-input > * {
+    color: var(--color-text);
+    background-color: var(--color-background-deeper);
+    border: 0;
+    outline: 0;
+    padding: 0;
+}
+
+.checkbox-container label {
+    width: 180px;
+}
+
+input {
+    border-radius: 2px;
+    outline: 2px solid var(--color-outline);
+    width: 237px;
+    color: var(--color-text);
+    background-color: var(--color-background-deeper);
+    border: 0;
+    padding: 0 0 0 3px;
+}
+
+.dropdown-input input {
+    border-radius: 0px;
+    position: absolute;
+    z-index: 1;
+    width: 219px;
+    padding-left: 3px;
+}
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    font-size: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkbox-checkmark {
+    border: 2px solid var(--color-outline);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: var(--color-background-deeper);
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkbox-checkmark {
+    background-color: #1c1c1e;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkbox-checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkbox-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkbox-checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkbox-checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* Settings */
+
+.tab-settings-matrix {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.proxy-bar {
+    display: flex;
+    height: 22px;
+    margin-bottom: 8px;
+    color: var(--color-text);
+    padding-left: 5px;
+}
+
+.settings-matrix-elem {
+    width: 400px;
+    height: 232px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #4d4d4f;
+}
+
+#proxy-enabled {
+    width: 14%;
+}
+
+.settings-matrix-elem > * {
+    margin: 3px 3px;
+    color: var(--color-text);
+}
+
+.active-lsc {
+    border-radius: 40%;
+    background: #1c1c1e;
+}
+
+.settings-matrix-elem header {
+    font: 19px "Trebuchet MS";
+    color: black;
+    margin: 0;
+    height: 10%;
+    text-align: center;
+}
+
+#matrix-profile header {
+    background: linear-gradient(120deg, #fdeb71, #f8d800);
+}
+
+#matrix-profile {
+
+    border-left-width: 2px;
+    border-top-width: 2px;
+}
+
+#matrix-posts {
+    border-left-width: 2px;
+    border-bottom-width: 2px;
+}
+
+#matrix-autojoin {
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-left-radius: 0;
+}
+
+#pbar {
+    margin-left: auto;
+    z-index: 3;
+}
+
+#pbar * {
+    z-index: 3;
+}
+
+
+#start {
+    width: 100px;
+    height: 30px;
+    background-color: var(--color-background-deeper);
+    border: 2px solid var(--color-outline);
+    border-radius: 2px;
+    color: var(--color-text);
+    margin-right: 8px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+#start:active {
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.24), 0 17px 40px 0 rgba(0, 0, 0, 0.19);
+}
+
+#matrix-autocomments {
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-bottom-right-radius: 0;
+}
+
+#matrix-posts header {
+    background: linear-gradient(120deg, #9ecdee, #0396ff);
+}
+
+#matrix-autojoin header {
+    background: linear-gradient(120deg, #feb692, #ea5455);
+}
+
+#matrix-autocomments header {
+    background: linear-gradient(120deg, #de92ef, #9653b8)
+}
+
+.setting {
+    display: flex;
+    width: 100%;
+    height: 22px;
+    vertical-align: middle;
+}
+
+
+.setting * {
+    margin-right: 7px;
+    height: 20px;
+}
+
+
+.file-lines-button {
+    cursor: pointer;
+    background-color: var(--color-background-deeper);
+    width: 19px;
+    outline: 2px solid var(--color-outline);
+    border-radius: 2px;
+    border: 0;
+    left: 210px;
+}
+
+.photo-file-button {
+    cursor: pointer;
+    background-color: var(--color-background-deeper);
+    width: 19px;
+    outline: 2px solid var(--color-outline);
+    border-radius: 2px;
+    border: 0;
+    left: 210px;
+}
+
+.photo-folder-button {
+    cursor: pointer;
+    background-color: var(--color-background-deeper);
+    width: 19px;
+    outline: 2px solid var(--color-outline);
+    border-radius: 2px;
+    border: 0;
+    left: 210px;
+}
+
+/* Footer */
+
+footer {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    border-top: 1px solid #353537;
+}
+
+footer label {
+    font-family: "Source Code Pro C", serif;
+    color: #d5d5d6;
+    margin: 10px;
+    font-size: 15px;
+    width: 100%;
+}
+
+/* Left sidebar*/
+
+.left-sidebar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    background-color: var(--color-background-deeper);
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 49px;
+}
+
+
+.left-sidebar * {
+    margin: auto 0;
+
+}
+
+.left-sidebar-button-panel * {
+    width: 23px;
+    height: 23px;
+    padding: 10px 10px 10px 10px;
+    margin-left: 3px;
+}
+
+.banned {
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.75);
+    width: 100%;
+    height: 100%;
+}
+
+.banned-text {
+    padding-top: 10px;
+    padding-left: 10px;
+    background-color: rgb(12, 152, 250);
+    width: 100%;
+    height: 40%;
+}
+
+.maintext {
+    position: absolute;
+    padding-top: 12px;
+    font-size: 28px;
+    padding-left: 10px;
+    font-family: "OpenSans Light C", serif;
+    color: #c4eaf7;
+}
+
+.undertext {
+    font-size: 18px;
+    position: absolute;
+    padding-top: 60px;
+    padding-left: 11px;
+    font-family: "OpenSans Light C", serif;
+    color: #c4eaf7;
+}
+
+.banned-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 3px solid #a9d8f5;
+    background-color: rgb(12, 152, 255);
+    position: absolute;
+    width: 100px;
+    height: 34px;
+    margin-top: 155px;
+    margin-left: 688px;
+}
+
+.banned-btn label {
+    font-family: "OpenSans Light C", serif;
+    color: #b3e9f8;
+}
+
+.setting label {
+    width: 90px;
+}
+
+.setting .checkbox-container {
+    cursor: pointer;
+    width: 300px;
+}
+
+#log-context {
+    overflow-y: scroll;
+}
+
+.context {
+    visibility: hidden;
+    /* white-space: pre-line; */
+    margin: 8px;
+    padding: 3px 4px;
+    border: 2px solid #4d4d4f;
+    position: absolute;
+    width: 794px;
+    height: 460px;
+    font-family: "Source Code Pro C", serif;
+    color: var(--color-text);
+}
+
+.footer-btn {
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-background-deeper);
+    border: 2px solid var(--color-outline);
+    border-radius: 2px;
+    color: var(--color-text);
+    margin-right: 8px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#openconsole {
+    margin-left: 12px;
+}
+
+.footer-btn:active {
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.24), 0 17px 40px 0 rgba(0, 0, 0, 0.19);
+}
+.log {
+    color: #efe9e9;
+    padding-left: 3px;
+}
+.log_time {
+    background-color: #3465a4;
+}
+.log_success {
+    background-color: #4caf50;
+    width: 16px;
+}
+.log_process {
+    background-color: #ff9100;
+    width: 16px;
+}
+.log_error {
+    background-color: #f44336;
+    width: 16px;
+}
+.log_source {
+    background-color: #9c27b0;
+}
+.triangle {
+    display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 11px solid #9c27b0;
+  border-bottom: 11px solid #9c27b0;
+  border-left: 11px solid #3465a4;
+}
+.triangle_start {
+    display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 11px solid #3465a4;
+  border-bottom: 11px solid #3465a4;
+  border-left: 11px solid #4caf50;
+}
+.triangle_end{
+    display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-left: 11px solid #9c27b0;
+    margin-right: 5px;
+}
+.triangle_three{
+    display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 11px solid #3465a4;
+  border-bottom: 11px solid #3465a4;
+  border-left: 11px solid #ff9100;
+}
+.triangle_four{
+    display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 11px solid #3465a4;
+  border-bottom: 11px solid #3465a4;
+  border-left: 11px solid #f44336;
+}

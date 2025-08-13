@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!-- HEAD -->
+<!-- Document written using UTF-8 -->
+<meta charset="UTF-8">
+<!-- Set title and favicon -->
+<!--<title>Plutoniumified Comments</title>-->
+<link rel="icon" type="image/x-icon" href="img/ico.ico">
+<!-- Load index.css -->
+<link rel="stylesheet" href="css/index.css">
+<!-- Load additional libs -->
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="/eel.js"></script>
+<!-- Load project scripts -->
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/config.js"></script>
+<body>
+<div class="banned">
+    <div class="banned-text">
+        <label class="maintext">Лицензия деактивирована!</label>
+        <label class="undertext">Неверный ключ программы. Выход через 10 секунд.</label>
+    </div>
+</div>
+<div class="main-context" style="visibility: hidden">
+    <!-- TODO: Left sidebar -->
+    <div class="left-sidebar" style="visibility: hidden">
+        <div class="left-sidebar-button-panel">
+            <img alt="profile" class="active-lsc" src="img/profile_blue.png">
+            <img alt="console" src="img/console.png">
+            <img alt="info" src="img/info.png">
+        </div>
+    </div>
+    <!-- Main tab (project settings) -->
+    <div class="tab-settings-matrix">
+        <!-- Profile settings -->
+        <div class="settings-matrix-elem" id="matrix-profile">
+            <header>
+                <label>Профиль</label>
+            </header>
+            <div class="setting" id="profile-enabled">
+                <label class="checkbox-container">Включить
+                    <input id="profile-checkbox-active" type="checkbox">
+                    <span class="checkbox-checkmark"/>
+                </label>
+            </div>
+            <div class="setting" id="2fa-enabled" title="Двухфакторная авторизация (пароль 000)">
+                <label class="checkbox-container">Ставить 2fa + сносить сессии
+                    <input id="2fa-checkbox-active" type="checkbox">
+                    <span class="checkbox-checkmark"/>
+                </label>
+            </div>
+            <div class="setting" id="hidden-enabled" title="Спамить скрыто от владельца (для фишинговых аккаунтов)">
+                <label class="checkbox-container">Скрытый спам
+                    <input id="hidden-checkbox-active" type="checkbox">
+                    <span class="checkbox-checkmark"/>
+                </label>
+            </div>
+            <div class="setting" id="profile-names">
+                <label>Имена</label>
+                <div class="dropdown-input">
+                    <input type="text"/>
+                    <select id="pr_sel_name">
+                        <option>Добавить</option>
+                        <option>Удалить всё</option>
+                    </select>
+                </div>
+                <img alt="text" class="file-lines-button" id="profile-names-button" src="img/file.png"/>
+            </div>
+            <div class="setting" id="profile-surnames">
+                <label>Фамилии</label>
+                <div class="dropdown-input">
+                    <input type="text"/>
+                    <select id="pr_sel_surname">
+                        <option>Добавить</option>
+                        <option>Удалить всё</option>
+                    </select>
+                </div>
+                <img alt="text" class="file-lines-button" id="profile-surnames-button" src="img/file.png"/>
+            </div>
+            <div class="setting" id="profile-usernames" title="Используйте % как случайный символ (пример: admin%).">
+                <label>Юзернеймы</label>
+                <div class="dropdown-input">
+                    <input type="text"/>
+                    <select id="pr_sel_uname">
+                        <option>Добавить</option>
+                        <option>Удалить всё</option>
+                    </select>
+                </div>
+                <img alt="text" class="file-lines-button" id="profile-unames-button" src="img/file.png"/>
+            </div>
+            <div class="setting" id="profile-bios">
+                <label>О себе</label>
+                <div class="dropdown-input">
+                    <input type="text"/>
+                    <select id="pr_sel_bio">
+                        <option>Добавить</option>
+                        <option>Удалить всё</option>
+                    </select>
+                </div>
+                <img alt="text" class="file-lines-button" id="profile-bios-button" src="img/file.png"/>
+            </div>
+            <div class="setting" id="profile-photos">
+                <label>Фото</label>
+                <img alt="text" class="photo-file-button" id="profile-photos-button-file" src="img/file.png"/>
+                <img alt="folder" class="photo-folder-button" id="profile-photos-button-folder" src="img/folder.png"/>
+            </div>
+        </div>
+        <!-- Autojoin settings -->
+        <div class="settings-matrix-elem" id="matrix-autojoin">
+            <header>
+                <label>Вступатор</label>
+            </header>
+            <div class="setting" id="autojoin-enabled">
+                <label class="checkbox-container">Включить
+                    <input id="autojoin-checkbox-active" type="checkbox">
+                    <span class="checkbox-checkmark"/>
+                </label>
+            </div>
+            <div class="setting" id="autojoin-all"
+                 title="если галочка активна, спамит во все каналы акка, если нет, только в добавленные софтом">
+                <label class="checkbox-container">Учитывать личные
+                    <input id="all-checkbox-active" type="checkbox">
+                    <span class="checkbox-checkmark"/>
+                </label>
+            </div>
+            <div class="setting" id="autojoin-channels">
+                <label>Каналы</label>
+                <div class="dropdown-input">
+                    <input type="text"/>
+                    <select id="aj_sel_channels">
+                        <option>Добавить</option>
+                        <option>Удалить всё</option>
+                    </select>
+                </div>
+                <img alt="text" id="autojoin-channels-button" class="file-lines-button" src="img/file.png"/>
+            </div>
+            <div class="setting" id="autojoin-delay">
+                <label>Задержка</label>
+                <input id="aj_in_delay" title="секунд" type="text"/>
+            </div>
+        </div>
+        <!-- Channel settings -->
+        <div class="settings-matrix-elem" id="matrix-posts">
+            <header>
+                <label>Старые посты</label>
+            </header>
+            <div class="setting" id="posts-enabled">
+                <label class="checkbox-container">Включить
+                    <input id="posts-checkbox-active" type="checkbox">
+                    <span class="checkbox-checkmark"/>
+                </label>
+            </div>
+            <div class="setting" id="channel-uniqalize-enabled">
+                <label class="checkbox-container">Уникализация
+                    <input id="posts-checkbox-uniqalize" type="checkbox">
+                    <span class="checkbox-checkmark"/>
+                </label>
+            </div>
+            <div class="setting" id="posts-channels">
+                <label>Каналы</label>
+                <div class="dropdown-input">
+                    <input type="text"/>
+                    <select id="po_sel_channels">
+                        <option>Добавить</option>
+                        <option>Удалить всё</option>
+                    </select>
+                </div>
+                <img alt="text" id="posts-channels-button" class="file-lines-button" src="img/file.png"/>
+            </div>
+            <div title="количество постов в каждом канале, на которые ответит бот" class="setting" id="posts-count">
+                <label>Количество</label>
+                <input id="po_in_count" type="text"/>
+            </div>
+            <div title="задержка между каждым постом" class="setting" id="posts-delay">
+                <label>Задержка</label>
+                <input id="po_in_delay" type="text"/>
+            </div>
+            <div title="двойной пробел - перенос строки; {абв} - выбор случайной буквы; {кек|лол} - выбор случайного слова."
+                 class="setting" id="posts-posts">
+                <label>Посты</label>
+                <div class="dropdown-input">
+                    <input type="text"/>
+                    <select id="po_sel_posts">
+                        <option>TextPost: добавить</option>
+                        <option>AiPost: добавить</option>
+                        <option>Удалить всё</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- Autocomments settings -->
+        <div class="settings-matrix-elem" id="matrix-autocomments">
+            <header>
+                <label>Новые посты</label>
+            </header>
+            <div class="setting" id="comments-enabled">
+                <label class="checkbox-container">Включить
+                    <input id="autocomments-checkbox-active" type="checkbox">
+                    <span class="checkbox-checkmark"/>
+                </label>
+            </div>
+            <div class="setting" id="comments-uniqalize-enabled">
+                <label class="checkbox-container">Уникализация
+                    <input id="autocomments-checkbox-uniqalize" type="checkbox">
+                    <span class="checkbox-checkmark"/>
+                </label>
+            </div>
+            <div title="двойной пробел - перенос строки; {абв} - выбор случайной буквы; {кек|лол} - выбор случайного слова."
+                 class="setting" id="comments-posts">
+                <label>Посты</label>
+                <div class="dropdown-input">
+                    <input type="text"/>
+                    <select id="aco_sel_posts">
+                        <option>TextPost: добавить</option>
+                        <option>AiPost: добавить</option>
+                        <option>Удалить всё</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="context" id="log-context" style="visibility: visible">
+    <!-- <span style="display: inline-flex; color: rgb(207, 212, 217); margin-bottom: 1px"><span class="log log_success log_elem">✔</span><span class="triangle_start"></span><span class="log log_time log_elem">19:58</span><span class="triangle"></span><span class="log log_source log_elem">Project v1.3.6</span><span class="triangle_end"></span>Проект запущен! <!-- [<a href="tg://resolve?phone=Project v1.3.6" target="_blank" style="color: rgb(207, 212, 217);">Project v1.3.6</a>]: Проект запуще--span> -->
+    <!-- <br> -->
+    <!-- <span style="display: inline-flex; color: rgb(207, 212, 217); margin-bottom: 1px"><span class="log log_process log_elem">🗲</span><span class="triangle_three"></span><span class="log log_time log_elem">19:58</span><span class="triangle"></span><span class="log log_source log_elem">Project v1.3.6</span><span class="triangle_end"></span>Проект запущен! <!-- [<a href="tg://resolve?phone=Project v1.3.6" target="_blank" style="color: rgb(207, 212, 217);">Project v1.3.6</a>]: Проект запуще--span> -->
+    <!-- <br> -->
+    <!-- <span style="display: inline-flex; color: rgb(207, 212, 217); margin-bottom: 1px"><span class="log log_error log_elem">✗</span><span class="triangle_four"></span><span class="log log_time log_elem">19:58</span><span class="triangle"></span><span class="log log_source log_elem">Project v1.3.6</span><span class="triangle_end"></span>Проект запущен! <!-- [<a href="tg://resolve?phone=Project v1.3.6" target="_blank" style="color: rgb(207, 212, 217);">Project v1.3.6</a>]: Проект запуще--span> -->
+    <!-- <br> -->
+</div>
+
+<!-- Main footer -->
+<footer>
+    <label id="status">00:00:00 Проект запущен!</label>
+    <button title="Открыть консоль" class="footer-btn" type="button" id="openconsole">▼</button>
+    <button title="Добавить аккаунт" class="footer-btn" type="button" id="addacc">☎</button>
+    <button type="submit" title="ЛКМ - мгновенный запуск, ПКМ - отложенный запуск" id="start">Старт</button>
+</footer>
+</body>
